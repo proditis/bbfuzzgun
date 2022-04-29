@@ -1,14 +1,16 @@
-# BBFuzzGun
+# (WIP) BBFuzzGun
+**NOTE** THIS IS EXPERIMENTAL
+
 A small container with tools offensive security tools to test https://github.com/echoCTF/echoCTF.RED before each release.
 
 The initial idea for this was born out of the necesity to fuzz our projects before release in a context that not only discovers vulnerabilities but also misconfigurations, errors and crashes.
 
 ## What this container does
 * Checks nginx configurations that are passed as volumes under **`/checks/nginx/`** folder (eg `-v ./local/nginx.conf:/checks/nginx/some.conf`)
-* Checks with `ffuf` the main url + given url lists
+* Checks with `ffuf` the main url + given url lists hunting for status codes `429` (rate limit) and `>=500`
 * performs paramspider
 * performs phpcs security checks
-* 
+*
 
 ## How to run
 ```shell

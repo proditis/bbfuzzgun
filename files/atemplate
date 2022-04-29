@@ -1,0 +1,13 @@
+#!/usr/bin/env ansible-playbook
+# Stand-alone jinja2 template parser script
+# usage:
+# atemplate -e TEMPLATE=/source/file -e OUTPUT=/destination/file -e template_var1=value1 -e template_var2=value2 etc
+---
+- name: Process Jinja2 Template
+  connection: local
+  hosts: localhost
+  gather_facts: false
+  tasks:
+  - template:
+      src: "{{TEMPLATE}}"
+      dest: "{{OUTPUT}}"

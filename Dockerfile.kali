@@ -1,0 +1,50 @@
+FROM kalilinux/kali-rolling:latest
+
+ENV DEBIAN_FRONTEND noninteractive
+RUN set -ex \
+  && apt-get update \
+  && apt-get -yqq install nmap \
+  golang-go \
+  assetfinder \
+  amass \
+  subfinder \
+  curl \
+  wget \
+  dnsutils \
+  sqlmap \
+  gobuster \
+  subjack \
+  ffuf \
+  unzip \
+  bat \
+  httpie \
+  netcat-traditional \
+  && pip3 install http-prompt \
+  && pip3 install httpcat \
+  && cd /tmp \
+  && wget -q --no-check-certificate https://github.com/lc/gau/releases/download/v2.1.2/gau_2.1.2_linux_amd64.tar.gz \
+  && wget -q --no-check-certificate https://github.com/stavinski/certgrabber/releases/download/v1.0.4/certgrabber_1.0.4_Linux_x86_64 \
+  && wget -q --no-check-certificate https://github.com/projectdiscovery/httpx/releases/download/v1.2.5/httpx_1.2.5_linux_amd64.zip \
+#  && wget -q --no-check-certificate https://wordlists-cdn.assetnote.io/data/manual/raft-medium-directories.txt \
+  && wget -q --no-check-certificate https://github.com/mgdm/htmlq/releases/download/v0.4.0/htmlq-x86_64-linux.tar.gz \
+  && unzip -o httpx_1.2.5_linux_amd64.zip \
+  && tar -zxvf gau_2.1.2_linux_amd64.tar.gz \
+  && tar -zxvf htmlq-x86_64-linux.tar.gz \
+  && mv gau httpx htmlq /usr/local/bin/ \
+  && mv certgrabber_1.0.4_Linux_x86_64 /usr/local/bin/certgrabber \
+  && go install github.com/proditis/orunmila@latest \
+  && go install github.com/proditis/mini-tools/cspparse@latest \
+  && go install github.com/proditis/mini-tools/certnames@latest \
+#  && go install github.com/projectdiscovery/httpx/cmd/httpx@latest \
+  && go install github.com/proditis/mini-tools/sniprobe@latest \
+  && go install github.com/outersky/har-tools/cmd/harx@latest \
+  && go install github.com/tomnomnom/gf@latest \
+  && go install github.com/tomnomnom/meg@latest \
+  && go install github.com/tomnomnom/unfurl@latest \
+  && go install github.com/tomnomnom/hacks/filter-resolved@latest \
+  && go install github.com/tomnomnom/httprobe@latest \
+  && go install github.com/tomnomnom/gron@latest \
+  && go install github.com/tomnomnom/anew@latest \
+  && go install github.com/tomnomnom/concurl@latest \
+  && go clean \
+  && rm -rf /tmp/* /usr/src/* /var/lib/apt/lists/*

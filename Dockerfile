@@ -51,13 +51,13 @@ RUN set -ex; \
   cd /tools/src/ParamSpider-master ; \
   pip3 install -r requirements.txt ; \
   ln -sf /tools/src/ParamSpider-master/paramspider.py /tools/bin/paramspider.py ;\
-#  go install github.com/m4dm0e/dirdar@latest ; \
-#  go install github.com/subfinder/subfinder@latest; \
-#  go install github.com/tomnomnom/assetfinder@latest; \
-#  go install github.com/lc/gau@latest ;\
-#  go install github.com/jaeles-project/gospider@latest ;\
-#  go install github.com/haccer/subjack@latest ; \
-#  go install github.com/tomnomnom/httprobe@latest ;\
+  go install github.com/m4dm0e/dirdar@latest ; \
+  go install github.com/subfinder/subfinder@latest; \
+  go install github.com/tomnomnom/assetfinder@latest; \
+  go install github.com/lc/gau@latest ;\
+  go install github.com/jaeles-project/gospider@latest ;\
+  go install github.com/haccer/subjack@latest ; \
+  go install github.com/tomnomnom/httprobe@latest ;\
   echo "localhost" > /etc/ansible/hosts ; \
   pip3 install wheel; \
   pip3 install colored; \
